@@ -6,6 +6,7 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import android.content.Context;
+import android.util.Log;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
