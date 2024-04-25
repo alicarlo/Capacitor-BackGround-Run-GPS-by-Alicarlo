@@ -7,6 +7,8 @@ import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import android.content.Context;
 import android.util.Log;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
