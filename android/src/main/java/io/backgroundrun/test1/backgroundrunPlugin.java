@@ -1,6 +1,6 @@
 package io.backgroundrun.test1;
 
-import io.backgroundrun.test1.R;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -22,6 +22,7 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
+import io.backgroundrun.test1.R;
 
 @CapacitorPlugin(name = "backgroundrunPlugin")
 public class backgroundrunPlugin extends Plugin {
