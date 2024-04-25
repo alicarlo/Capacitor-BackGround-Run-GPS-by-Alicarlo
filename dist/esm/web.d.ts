@@ -6,4 +6,5 @@ export declare class backgroundrunWeb extends WebPlugin implements backgroundrun
     }): Promise<{
         value: string;
     }>;
+    showNotificationOnAppClose(): Promise<void>;
 }

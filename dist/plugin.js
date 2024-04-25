@@ -1,4 +1,4 @@
-var capacitorbackgroundrun = (function (exports, core) {
+var capacitorbackgroundrun = (function (exports, core, app, localNotifications) {
     'use strict';
 
     const backgroundrun = core.registerPlugin('backgroundrun', {
@@ -9,6 +9,22 @@ var capacitorbackgroundrun = (function (exports, core) {
         async echo(options) {
             console.log('ECHO', options);
             return options;
+        }
+        async showNotificationOnAppClose() {
+            app.App.addListener('appStateChange', async (state) => {
+                if (!state.isActive) {
+                    await localNotifications.LocalNotifications.schedule({
+                        notifications: [{
+                                title: '¡Hasta luego!',
+                                body: 'La aplicación se ha cerrado.',
+                                id: 1,
+                                schedule: { at: new Date(Date.now() + 1000) },
+                                actionTypeId: '',
+                                extra: null
+                            }]
+                    });
+                }
+            });
         }
     }
 
@@ -23,5 +39,5 @@ var capacitorbackgroundrun = (function (exports, core) {
 
     return exports;
 
-})({}, capacitorExports);
+})({}, capacitorExports, app, localNotifications);
 //# sourceMappingURL=plugin.js.map

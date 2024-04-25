@@ -4,4 +4,5 @@ export interface backgroundrunPlugin {
     }): Promise<{
         value: string;
     }>;
+    showNotificationOnAppClose(): Promise<void>;
 }
