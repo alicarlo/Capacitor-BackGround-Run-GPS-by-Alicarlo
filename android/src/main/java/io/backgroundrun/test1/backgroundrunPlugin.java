@@ -19,4 +19,29 @@ public class backgroundrunPlugin extends Plugin {
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
     }
+
+		@PluginMethod
+    public void showNotificationOnAppClose(PluginCall call) {
+        Log.d(TAG, "showNotificationOnAppClose called");
+        Context context = getContext();
+        if (context != null) {
+            showNotification(context);
+            call.resolve();
+        } else {
+            call.reject("Context is null");
+        }
+    }
+
+    private void showNotification(Context context) {
+        // Crear una notificación
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id")
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("¡Hasta luego!")
+                .setContentText("La aplicación se ha cerrado.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        // Mostrar la notificación
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(1, builder.build());
+    }
 }
