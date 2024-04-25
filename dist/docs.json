@@ -23,8 +23,14 @@
       },
       {
         "name": "showNotificationOnAppClose",
-        "signature": "() => Promise<void>",
-        "parameters": [],
+        "signature": "(context: any) => Promise<void>",
+        "parameters": [
+          {
+            "name": "context",
+            "docs": "",
+            "type": "any"
+          }
+        ],
         "returns": "Promise<void>",
         "tags": [],
         "docs": "",

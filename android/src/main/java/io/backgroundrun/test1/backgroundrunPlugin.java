@@ -9,7 +9,7 @@ import android.content.Context;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import io.backgroundrun.R;
+
 @CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
 		private static final String TAG = "MyNotificationPlugin";
@@ -26,26 +26,22 @@ public class backgroundrunPlugin extends Plugin {
 
 		@PluginMethod
     public void showNotificationOnAppClose(PluginCall call) {
-        Log.d(TAG, "showNotificationOnAppClose called");
         Context context = getContext();
         if (context != null) {
-            showNotification(context);
+            int iconId = context.getResources().getIdentifier("ic_notification", "drawable", context.getPackageName());
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id")
+                    .setSmallIcon(iconId)
+                    .setContentTitle("¡Hasta luego!")
+                    .setContentText("La aplicación se ha cerrado.")
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.notify(1, builder.build());
+
             call.resolve();
         } else {
             call.reject("Context is null");
         }
-    }
-
-    private void showNotification(Context context) {
-        // Crear una notificación
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "channel_id")
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle("¡Hasta luego!")
-                .setContentText("La aplicación se ha cerrado.")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        // Mostrar la notificación
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
     }
 }

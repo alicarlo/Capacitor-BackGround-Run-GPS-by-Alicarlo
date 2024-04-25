@@ -2,5 +2,5 @@
 
 export interface backgroundrunPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
-	showNotificationOnAppClose() : Promise<void>;
+	showNotificationOnAppClose(context: any) : Promise<void>;
 }

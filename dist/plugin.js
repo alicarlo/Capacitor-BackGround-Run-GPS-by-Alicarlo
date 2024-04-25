@@ -10,19 +10,32 @@ var capacitorbackgroundrun = (function (exports, core, app, localNotifications) 
             console.log('ECHO', options);
             return options;
         }
-        async showNotificationOnAppClose() {
+        async showNotificationOnAppClose(context) {
             app.App.addListener('appStateChange', async (state) => {
                 if (!state.isActive) {
-                    await localNotifications.LocalNotifications.schedule({
-                        notifications: [{
-                                title: '¡Hasta luego!',
-                                body: 'La aplicación se ha cerrado.',
-                                id: 1,
-                                schedule: { at: new Date(Date.now() + 1000) },
-                                actionTypeId: '',
-                                extra: null
-                            }]
-                    });
+                    const packageName = context.getPackageName();
+                    const iconId = context.getResources().getIdentifier("ic_notification", "drawable", packageName);
+                    /*await LocalNotifications.schedule({
+                      notifications: [{
+                        title: '¡Hasta luego!',
+                        body: 'La aplicación se ha cerrado.',
+                        id: 1,
+                        schedule: { at: new Date(Date.now() + 1000) },
+                        actionTypeId: '',
+                        extra: null,
+                                    iconId: iconId
+                      }]
+                    });*/
+                    const notification = {
+                        title: '¡Hasta luego!',
+                        body: 'La aplicación se ha cerrado.',
+                        id: 1,
+                        schedule: { at: new Date(Date.now() + 1000) },
+                        actionTypeId: '',
+                        extra: null,
+                        iconId: iconId
+                    };
+                    await localNotifications.LocalNotifications.schedule({ notifications: [notification] });
                 }
             });
         }
