@@ -8,7 +8,4 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
     return options;
   }
 
-	async playVideo(video: string): Promise<void> {
-    console.log('ECHO', video);
-  }
 }
