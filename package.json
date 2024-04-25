@@ -1,6 +1,6 @@
 {
   "name": "backgroundrun",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "test background",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",

@@ -1,5 +1,6 @@
 package io.backgroundrun.test1;
 
+import io.backgroundrun.test1.R;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
