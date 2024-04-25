@@ -10,7 +10,7 @@ import android.util.Log;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
-
+		private static final String TAG = "MyNotificationPlugin";
     private backgroundrun implementation = new backgroundrun();
 
     @PluginMethod
