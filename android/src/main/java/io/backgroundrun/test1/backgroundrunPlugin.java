@@ -9,7 +9,7 @@ import android.content.Context;
 import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
+import io.backgroundrun.R;
 @CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
 		private static final String TAG = "MyNotificationPlugin";
