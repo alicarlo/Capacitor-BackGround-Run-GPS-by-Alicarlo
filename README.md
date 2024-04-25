@@ -14,7 +14,7 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
-* [`showNotificationOnAppClose(...)`](#shownotificationonappclose)
+* [`showNotificationOnAppClose()`](#shownotificationonappclose)
 
 </docgen-index>
 
@@ -36,15 +36,11 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 --------------------
 
 
-### showNotificationOnAppClose(...)
+### showNotificationOnAppClose()
 
 ```typescript
-showNotificationOnAppClose(context: any) => Promise<void>
+showNotificationOnAppClose() => Promise<void>
 ```
-
-| Param         | Type             |
-| ------------- | ---------------- |
-| **`context`** | <code>any</code> |
 
 --------------------
 

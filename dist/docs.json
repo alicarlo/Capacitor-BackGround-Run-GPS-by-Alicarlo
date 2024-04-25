@@ -23,14 +23,8 @@
       },
       {
         "name": "showNotificationOnAppClose",
-        "signature": "(context: any) => Promise<void>",
-        "parameters": [
-          {
-            "name": "context",
-            "docs": "",
-            "type": "any"
-          }
-        ],
+        "signature": "() => Promise<void>",
+        "parameters": [],
         "returns": "Promise<void>",
         "tags": [],
         "docs": "",
@@ -43,61 +37,5 @@
   "interfaces": [],
   "enums": [],
   "typeAliases": [],
-  "pluginConfigs": [
-    {
-      "name": "LocalNotifications",
-      "slug": "localnotifications",
-      "properties": [
-        {
-          "name": "smallIcon",
-          "tags": [
-            {
-              "text": "1.0.0",
-              "name": "since"
-            },
-            {
-              "text": "\"ic_stat_icon_config_sample\"",
-              "name": "example"
-            }
-          ],
-          "docs": "Set the default status bar icon for notifications.\n\nIcons should be placed in your app's `res/drawable` folder. The value for\nthis option should be the drawable resource ID, which is the filename\nwithout an extension.\n\nOnly available for Android.",
-          "complexTypes": [],
-          "type": "string | undefined"
-        },
-        {
-          "name": "iconColor",
-          "tags": [
-            {
-              "text": "1.0.0",
-              "name": "since"
-            },
-            {
-              "text": "\"#488AFF\"",
-              "name": "example"
-            }
-          ],
-          "docs": "Set the default color of status bar icons for notifications.\n\nOnly available for Android.",
-          "complexTypes": [],
-          "type": "string | undefined"
-        },
-        {
-          "name": "sound",
-          "tags": [
-            {
-              "text": "1.0.0",
-              "name": "since"
-            },
-            {
-              "text": "\"beep.wav\"",
-              "name": "example"
-            }
-          ],
-          "docs": "Set the default notification sound for notifications.\n\nOn Android 26+ it sets the default channel sound and can't be\nchanged unless the app is uninstalled.\n\nIf the audio file is not found, it will result in the default system\nsound being played on Android 21-25 and no sound on Android 26+.\n\nOnly available for Android.",
-          "complexTypes": [],
-          "type": "string | undefined"
-        }
-      ],
-      "docs": "On Android, the Local Notifications can be configured with the following options:"
-    }
-  ]
+  "pluginConfigs": []
 }

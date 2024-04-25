@@ -3,8 +3,6 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var core = require('@capacitor/core');
-var app = require('@capacitor/app');
-var localNotifications = require('@capacitor/local-notifications');
 
 const backgroundrun = core.registerPlugin('backgroundrun', {
     web: () => Promise.resolve().then(function () { return web; }).then(m => new m.backgroundrunWeb()),
@@ -15,34 +13,9 @@ class backgroundrunWeb extends core.WebPlugin {
         console.log('ECHO', options);
         return options;
     }
-    async showNotificationOnAppClose(context) {
-        app.App.addListener('appStateChange', async (state) => {
-            if (!state.isActive) {
-                const packageName = context.getPackageName();
-                const iconId = context.getResources().getIdentifier("ic_notification", "drawable", packageName);
-                /*await LocalNotifications.schedule({
-                  notifications: [{
-                    title: '¡Hasta luego!',
-                    body: 'La aplicación se ha cerrado.',
-                    id: 1,
-                    schedule: { at: new Date(Date.now() + 1000) },
-                    actionTypeId: '',
-                    extra: null,
-                                iconId: iconId
-                  }]
-                });*/
-                const notification = {
-                    title: '¡Hasta luego!',
-                    body: 'La aplicación se ha cerrado.',
-                    id: 1,
-                    schedule: { at: new Date(Date.now() + 1000) },
-                    actionTypeId: '',
-                    extra: null,
-                    iconId: iconId
-                };
-                await localNotifications.LocalNotifications.schedule({ notifications: [notification] });
-            }
-        });
+    async showNotificationOnAppClose() {
+        throw new Error('Method not implemented.');
+        // Implementa aquí la lógica para mostrar la notificación en la web
     }
 }
 
