@@ -30,7 +30,7 @@ import io.backgroundrun.test1.R;
 public class backgroundrunPlugin extends Plugin {
 		// private static final String CHANNEL_ID = "io.backgroundrun.test1";
 		private static final String CHANNEL_ID = "backgroundrun_notification_channel";
-		@Override
+		// @Override
     public void load() {
         IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         getContext().registerReceiver(broadcastReceiver, filter);
