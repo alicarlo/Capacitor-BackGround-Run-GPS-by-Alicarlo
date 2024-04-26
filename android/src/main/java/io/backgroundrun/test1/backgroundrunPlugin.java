@@ -75,7 +75,7 @@ public class backgroundrunPlugin extends Plugin {
         boolean isWhiteIcon = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
         String iconName = isWhiteIcon ? "ic_notification" : "ic_notification_dark";
         return context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
-    }*
+    }
 
 		// Esto si funciona
 		/*@PluginMethod
