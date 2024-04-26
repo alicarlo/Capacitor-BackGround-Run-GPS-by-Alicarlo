@@ -46,10 +46,17 @@ public class backgroundrunPlugin extends Plugin {
     };
 
 		// @Override
-    public void onDestroy() {
+    /*public void onDestroy() {
         getContext().unregisterReceiver(broadcastReceiver);
         super.onDestroy();
+    }*/
+
+		public void onDestroy() {
+    if (broadcastReceiver != null) {
+        getContext().unregisterReceiver(broadcastReceiver);
+        broadcastReceiver = null;
     }
+}
 
 		private void showNotification(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
