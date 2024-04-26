@@ -32,7 +32,7 @@ public class backgroundrunPlugin extends Plugin {
 		private static final String CHANNEL_ID = "backgroundrun_notification_channel";
 
 
-		@Override
+		// @Override
 		public void onTaskRemoved(Intent rootIntent) {
 				super.onTaskRemoved(rootIntent);
 			Context context = getApplicationContext(); // Obtén el contexto de la aplicación
