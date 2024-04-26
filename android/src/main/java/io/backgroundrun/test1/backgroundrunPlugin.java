@@ -45,7 +45,7 @@ public class backgroundrunPlugin extends Plugin {
         }
     };
 
-		@Override
+		// @Override
     public void onDestroy() {
         getContext().unregisterReceiver(broadcastReceiver);
         super.onDestroy();
