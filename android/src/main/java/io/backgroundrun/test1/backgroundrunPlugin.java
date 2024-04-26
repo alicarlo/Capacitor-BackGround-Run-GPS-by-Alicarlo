@@ -30,33 +30,21 @@ import io.backgroundrun.test1.R;
 public class backgroundrunPlugin extends Plugin {
 		// private static final String CHANNEL_ID = "io.backgroundrun.test1";
 		private static final String CHANNEL_ID = "backgroundrun_notification_channel";
-		// @Override
-    public void load() {
-        IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
-        getContext().registerReceiver(broadcastReceiver, filter);
-    }
 
-		private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(intent.getAction())) {
-                showNotification(context);
-            }
-        }
-    };
 
-		// @Override
-    /*public void onDestroy() {
-        getContext().unregisterReceiver(broadcastReceiver);
-        super.onDestroy();
-    }*/
+		@Override
+		public void onTaskRemoved(Intent rootIntent) {
+				super.onTaskRemoved(rootIntent);
+			Context context = getApplicationContext(); // Obtén el contexto de la aplicación
+			BackgroundrunPlugin.showNotification(context); // Llama al método showNotification() del plugin
+		}
 
 		public void onDestroy() {
     if (broadcastReceiver != null) {
         getContext().unregisterReceiver(broadcastReceiver);
         broadcastReceiver = null;
     }
-}
+	}
 
 		private void showNotification(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -86,7 +74,65 @@ public class backgroundrunPlugin extends Plugin {
         return context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
     }
 
-		// Esto si funciona
+
+		/*// Esto si funciona lanza una notificacion cuando se la app se pone en segundo plano
+		// @Override
+    public void load() {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        getContext().registerReceiver(broadcastReceiver, filter);
+    }
+
+		private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(intent.getAction())) {
+                showNotification(context);
+            }
+        }
+    };
+
+		// @Override
+    // public void onDestroy() {
+    //    getContext().unregisterReceiver(broadcastReceiver);
+    //    super.onDestroy();
+    //}
+
+		public void onDestroy() {
+    if (broadcastReceiver != null) {
+        getContext().unregisterReceiver(broadcastReceiver);
+        broadcastReceiver = null;
+    }
+	}
+
+		private void showNotification(Context context) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Backgroundrun Notifications", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("Channel description");
+            channel.enableLights(true);
+            channel.setLightColor(Color.RED);
+            channel.enableVibration(true);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(getNotificationIcon(context))
+                .setContentTitle("App Notification")
+                .setContentText("This is a notification from your app")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Notification notification = builder.build();
+        notificationManager.notify(1, notification);
+    }
+
+    private int getNotificationIcon(Context context) {
+        boolean isWhiteIcon = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
+        String iconName = isWhiteIcon ? "ic_notification" : "ic_notification_dark";
+        return context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
+    }*/
+
+		// Esto si funciona lanza una notificacion cuando se abre la app
 		/*@PluginMethod
     public void showNotificationOnAppClose(PluginCall call) {
         Context context = getContext();
