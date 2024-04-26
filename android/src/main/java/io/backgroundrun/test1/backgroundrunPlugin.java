@@ -53,7 +53,7 @@ public class backgroundrunPlugin extends Plugin {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(getNotificationIcon())
+                .setSmallIcon(getNotificationIcon(context))
                 .setContentTitle("App Notification")
                 .setContentText("This is a notification from your app")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
@@ -62,9 +62,10 @@ public class backgroundrunPlugin extends Plugin {
         notificationManager.notify(1, notification);
     }
 
-		private int getNotificationIcon() {
+    private int getNotificationIcon(Context context) {
         boolean isWhiteIcon = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
-        return isWhiteIcon ? R.drawable.ic_notification : R.drawable.ic_notification_dark;
+        String iconName = isWhiteIcon ? "ic_notification" : "ic_notification_dark";
+        return context.getResources().getIdentifier(iconName, "drawable", context.getPackageName());
     }
     
 }
