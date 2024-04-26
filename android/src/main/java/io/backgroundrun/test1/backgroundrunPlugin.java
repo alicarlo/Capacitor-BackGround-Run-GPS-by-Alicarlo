@@ -1,6 +1,7 @@
 package io.backgroundrun.test1;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
