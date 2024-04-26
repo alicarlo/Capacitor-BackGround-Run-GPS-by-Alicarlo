@@ -34,7 +34,7 @@ public class backgroundrunPlugin extends Plugin {
 
 		// @Override
 		public void onTaskRemoved(Intent rootIntent) {
-				super.onTaskRemoved(rootIntent);
+			// super.onTaskRemoved(rootIntent);
 			Context context = getApplicationContext(); // Obtén el contexto de la aplicación
 			BackgroundrunPlugin.showNotification(context); // Llama al método showNotification() del plugin
 		}
