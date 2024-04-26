@@ -24,7 +24,7 @@ import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 import io.backgroundrun.test1.R;
 
-@CapacitorPlugin(name = "backgroundrunPlugin")
+@CapacitorPlugin(name = "backgroundrun")
 public class backgroundrunPlugin extends Plugin {
 		// private static final String CHANNEL_ID = "io.backgroundrun.test1";
 		private static final String CHANNEL_ID = "backgroundrun_notification_channel";
