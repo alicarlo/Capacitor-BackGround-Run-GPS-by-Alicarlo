@@ -1,0 +1,1 @@
+{"version":3,"file":"definitions.js","sourceRoot":"","sources":["../../src/definitions.ts"],"names":[],"mappings":"","sourcesContent":["\n\nexport interface backgroundrunPlugin {\n  echo(options: { value: string }): Promise<{ value: string }>;\n\tshowNotificationOnAppClose() : Promise<void>;\n}\n"]}
