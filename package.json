@@ -10,7 +10,7 @@
     "android/src/main/",
     "android/build.gradle",
     "dist/",
-		"src/",
+    "src/",
     "ios/Plugin/",
     "Backgroundrun.podspec"
   ],
@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@capacitor/app": "^6.0.0",
-    "@capacitor/local-notifications": "^6.0.0"
+    "@capacitor/local-notifications": "^6.0.0",
+    "backgroundrun": "file:backgroundrun-0.0.87.tgz"
   }
 }
