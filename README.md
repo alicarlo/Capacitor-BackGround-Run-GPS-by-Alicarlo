@@ -22,6 +22,8 @@ npx cap sync
 * [`requestNotificationPermission()`](#requestnotificationpermission)
 * [`checkUsageStatsNotificationPausePermission(...)`](#checkusagestatsnotificationpausepermission)
 * [`checkManageAppPermissionsPermission(...)`](#checkmanageapppermissionspermission)
+* [`checkNotificationPermission()`](#checknotificationpermission)
+* [`openNotificationSettings()`](#opennotificationsettings)
 * [`acquireWakeLock()`](#acquirewakelock)
 * [`releaseWakeLock()`](#releasewakelock)
 * [Interfaces](#interfaces)
@@ -138,6 +140,24 @@ checkManageAppPermissionsPermission(options: { value: boolean; }) => Promise<{ v
 | **`options`** | <code>{ value: boolean; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: boolean; }&gt;</code>
+
+--------------------
+
+
+### checkNotificationPermission()
+
+```typescript
+checkNotificationPermission() => Promise<void>
+```
+
+--------------------
+
+
+### openNotificationSettings()
+
+```typescript
+openNotificationSettings() => Promise<void>
+```
 
 --------------------
 

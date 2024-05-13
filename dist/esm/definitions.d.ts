@@ -24,6 +24,8 @@ export interface backgroundrunPlugin {
     }): Promise<{
         value: boolean;
     }>;
+    checkNotificationPermission(): Promise<void>;
+    openNotificationSettings(): Promise<void>;
     acquireWakeLock(): Promise<void>;
     releaseWakeLock(): Promise<void>;
 }

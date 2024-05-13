@@ -8,6 +8,8 @@ export declare class backgroundrunWeb extends WebPlugin implements backgroundrun
     }>;
     showNotificationOnAppClose(options: GpsOptions): Promise<GpsOptions>;
     stopNotificationService(): Promise<void>;
+    checkNotificationPermission(): Promise<void>;
+    openNotificationSettings(): Promise<void>;
     checkPermissionsService(options: {
         value: boolean;
     }): Promise<{

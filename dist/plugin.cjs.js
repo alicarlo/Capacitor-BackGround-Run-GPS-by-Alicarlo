@@ -20,6 +20,14 @@ class backgroundrunWeb extends core.WebPlugin {
         throw new Error('Method not implemented.');
         // Implementa aquí la lógica para mostrar la notificación en la web
     }
+    async checkNotificationPermission() {
+        throw new Error('Method not implemented.');
+        // Implementa aquí la lógica para mostrar la notificación en la web
+    }
+    async openNotificationSettings() {
+        throw new Error('Method not implemented.');
+        // Implementa aquí la lógica para mostrar la notificación en la web
+    }
     async checkPermissionsService(options) {
         return options;
     }

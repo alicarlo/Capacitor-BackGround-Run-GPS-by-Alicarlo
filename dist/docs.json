@@ -128,6 +128,26 @@
         "slug": "checkmanageapppermissionspermission"
       },
       {
+        "name": "checkNotificationPermission",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "checknotificationpermission"
+      },
+      {
+        "name": "openNotificationSettings",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "opennotificationsettings"
+      },
+      {
         "name": "acquireWakeLock",
         "signature": "() => Promise<void>",
         "parameters": [],
