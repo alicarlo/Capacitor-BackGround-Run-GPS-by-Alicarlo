@@ -313,7 +313,6 @@ public class BackgroundrunPlugin extends Plugin {
 	// Method used
 	@PluginMethod
 	public void showNotificationOnAppClose(PluginCall call) {
-		Log.e("BackgroundrunPlugin", "entro7000 yeaaa");
 		String url = call.getString("url", "Empty");
 		String id1 = call.getString("id1", "Empty");
 		String id2 = call.getString("id2", "Empty");
@@ -327,7 +326,6 @@ public class BackgroundrunPlugin extends Plugin {
 
 
 		if (url.equals("")) {
-			Log.e("BackgroundrunPlugin", "entro7000 entraaaaaaa");
 			JSObject ret = new JSObject();
 			ret.put("message", "Url is required to start the process.");
 			call.resolve(ret);
@@ -347,7 +345,7 @@ public class BackgroundrunPlugin extends Plugin {
 			return;
 		}
 		
-		Log.e("BackgroundrunPlugin", "entro7000 entraaaaaaa"+timerGps);
+		Log.e("BackgroundrunPlugin", timerGps);
 		if (timerGps < 30000) {
 			messageFormat("The minimum time required is 30,000 (30 seconds).", call);
 			return;
@@ -367,8 +365,8 @@ public class BackgroundrunPlugin extends Plugin {
 		
 		Context context = getContext();
 		BackgroundService service = new BackgroundService(data, context);
-		Log.e("BackgroundrunPlugin", +context);
-		Log.e("BackgroundrunPlugin",+callbacks);
+		Log.e("BackgroundrunPlugin", context);
+		Log.e("BackgroundrunPlugin",callbacks);
     if (context != null) {
 			if (callbacks == null) {
 				Intent intent = new Intent(context, BackgroundService.class);
