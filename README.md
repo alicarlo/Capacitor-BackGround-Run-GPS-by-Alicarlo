@@ -146,7 +146,8 @@ interface GpsOptions
 
 Example: 
 
-![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/3feb5583-1858-4175-b115-850ad2601197)
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/0231bff4-4f37-4b32-a441-08bd1468d234)
+
 
 
 Step 9:
