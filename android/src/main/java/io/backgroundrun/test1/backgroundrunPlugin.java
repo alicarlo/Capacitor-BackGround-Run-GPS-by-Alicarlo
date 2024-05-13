@@ -345,7 +345,6 @@ public class BackgroundrunPlugin extends Plugin {
 			return;
 		}
 		
-		Log.e("BackgroundrunPlugin", timerGps);
 		if (timerGps < 30000) {
 			messageFormat("The minimum time required is 30,000 (30 seconds).", call);
 			return;
@@ -365,8 +364,6 @@ public class BackgroundrunPlugin extends Plugin {
 		
 		Context context = getContext();
 		BackgroundService service = new BackgroundService(data, context);
-		Log.e("BackgroundrunPlugin", context);
-		Log.e("BackgroundrunPlugin",callbacks);
     if (context != null) {
 			if (callbacks == null) {
 				Intent intent = new Intent(context, BackgroundService.class);
