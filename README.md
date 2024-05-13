@@ -129,7 +129,7 @@ timerGps: The time interval at which the service will run. The minimum required 
 coordinatesShow: Indicates whether you want to show the coordinates in the notification.
 timeShow: Indicates whether you want to show the GPS update time in the notification.
 
-{
+
     url: 'https://your-api',
     id1: '',
     id2: '',
@@ -139,9 +139,10 @@ timeShow: Indicates whether you want to show the GPS update time in the notifica
     timerGps: 30000, // 60000
     coordinatesShow: true,
     timeShow: true
-}
 
-interface GpsOptions {
+
+interface GpsOptions 
+
     url: string;
     id1: string;
     id2: string;
@@ -151,7 +152,10 @@ interface GpsOptions {
     timerGps: number;
     coordinatesShow: boolean;
     timeShow: boolean;
-}
+
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/8bda0a36-b56d-4d5b-96ad-3021442030b5)
+
 
 Example: 
 
