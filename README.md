@@ -1,7 +1,184 @@
 # backgroundrun
 
-test background
+I'm glad this is helpful for your projects.
 
+Could you help me with a donation to continue improving and providing support? With your help, I'll be able to start working on the iOS part.
+Many users use this type of plugins for their companies' or clients' projects. Your donation would be greatly appreciated.
+
+******* Donation *******
+
+https://buymeacoffee.com/alicarlomow
+
+******* ☕☕☕ *******
+
+Available only for Android.
+
+
+This plugin starts a service to continue reporting the location. Once started, you must stop it with one of our methods, as even if you close the application, the service will continue running.
+Always remember to inform the user about the use of their location, provide the option to view the permissions granted so that the user can review and accept or deny them. You can use our methods.
+
+Usage of this plugin:
+
+Step 1:
+
+Add the following permissions in your project's AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-feature android:name="android.hardware.location.gps" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.VIBRATE"/>
+
+Step 2:
+
+Add your package name in the manifest tag of your AndroidManifest.xml.
+
+Example:
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/0c35a9cf-af06-44af-8c2f-d1ca297a2bfb)
+
+
+Step 3:
+
+Add the following line inside the <application/> tag in your AndroidManifest.xml:
+
+Line: 
+<service android:name="io.backgroundrun.test1.BackgroundService" android:enabled="true" android:exported="true"/>
+
+Example:
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/3fe56d00-6518-4fc9-9b9b-b9de55a2d152)
+
+Step 4:
+
+To display the service activation notification, it is required to add the following images for its icons in the following path:
+
+android/app/src/main/res/drawable
+
+There are two images and they must be named as follows:
+
+ic_notification_dark.png
+ic_notification.png
+
+Example:
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/8c3ee832-890f-4b1d-aa5c-35b48498040b)
+
+Step 5:
+
+Notification permissions must be granted.
+
+Note: If you do not grant permission, the service will not run.
+
+You can use one of our methods or use the plugin of your choice.
+
+Permission request: requestNotificationPermission()
+Permission check: checkNotificationPermission()
+Navigate to notification settings: openNotificationSettings()
+
+Step 6:
+
+Background location permissions must be granted.
+
+Note: If you do not grant permission, the service will not run.
+
+You can use one of our methods or use the plugin of your choice.
+
+Permission check: checkPermissionsService()
+
+The checkPermissionsService() method requires a boolean parameter.
+If the parameter is true, a message will be displayed to navigate to location permissions for the user to grant it.
+
+The permission must be set to "Allow all the time".
+
+Example:
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/40e1b2ef-50b2-40c7-a4b6-c1cc31f0f622)
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/314c0c09-4c9a-41e8-91ae-de48fbb74eb8)
+
+Step 7:
+
+The WakeLock option must be activated.
+
+Use the following method: acquireWakeLock().
+
+This option keeps the service running when the screen is off.
+
+Note: We recommend activating this option before starting the service.
+
+Step 8:
+
+Once the above steps are completed, you can start the service with the following method: showNotificationOnAppClose().
+
+The method supports the following values:
+
+url: You must send the URL (API) of your service where you will receive the coordinates. Your API must be a POST request.
+id1, id2, id3, id4: These are optional values in case you need to send any ID, etc.
+title: The name that will be displayed in the notification.
+timerGps: The time interval at which the service will run. The minimum required time is 30 seconds. 1000 = 1 second.
+coordinatesShow: Indicates whether you want to show the coordinates in the notification.
+timeShow: Indicates whether you want to show the GPS update time in the notification.
+
+{
+    url: 'https://your-api',
+    id1: '',
+    id2: '',
+    id3: '',
+    id4: '',
+    title: 'Hello I'm a background service :D',
+    timerGps: 30000, // 60000
+    coordinatesShow: true,
+    timeShow: true
+}
+
+interface GpsOptions {
+    url: string;
+    id1: string;
+    id2: string;
+    id3: string;
+    id4: string;
+    title: string;
+    timerGps: number;
+    coordinatesShow: boolean;
+    timeShow: boolean;
+}
+
+Example: 
+
+![image](https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo/assets/27228316/3feb5583-1858-4175-b115-850ad2601197)
+
+
+Step 9:
+
+You should have the service running when you consider it necessary in your project. To stop the service, use the following method: stopNotificationService().
+
+
+Step 10 (Optional):
+
+The main issue with this type of plugins is resource consumption. We have a method to disable battery optimization. This method is not required with the previous steps; it should work correctly, but some devices may stop the service, which could be prevented by disabling battery optimization.
+
+Always remember to inform the user why this action is required.
+
+Method to disable battery optimization: ignoringBatteryOptimizationsService()
+Method to request battery optimization: requestBatteryOptimizations()
+
+Quick summary:
+
+Notification permission.
+Background location permission (allow all the time).
+WakeLock activation.
+Start service.
+Stop service (when required).
 ## Install
 
 ```bash
