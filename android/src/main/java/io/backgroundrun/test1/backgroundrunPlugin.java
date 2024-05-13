@@ -219,11 +219,23 @@ public class BackgroundrunPlugin extends Plugin {
 
 	@PluginMethod
 	public void openNotificationSettings(PluginCall call) {
+		Context context = getContext();
+		if (context == null) {
+				call.reject("Unable to get context");
+				return;
+		}
+
 		Intent intent = new Intent();
 		intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
-		intent.putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName());
-		startActivity(intent);
-		call.success();
+		intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.getPackageName());
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+		try {
+			context.startActivity(intent);
+			call.success();
+		} catch (Exception e) {
+			call.error("Failed to open notification settings: " + e.getMessage());
+		}
 	}
 
 	// Method used
