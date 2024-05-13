@@ -10,6 +10,8 @@ export interface backgroundrunPlugin {
 	requestNotificationPermission() : Promise<void>;
 	checkUsageStatsNotificationPausePermission(options: {value: boolean}) : Promise<{value: boolean}>;
 	checkManageAppPermissionsPermission(options: {value: boolean}) : Promise<{value: boolean}>;
+	checkNotificationPermission() : Promise<void>;
+	openNotificationSettings() : Promise<void>;
 	acquireWakeLock() : Promise<void>;
 	releaseWakeLock() : Promise<void>;
 }

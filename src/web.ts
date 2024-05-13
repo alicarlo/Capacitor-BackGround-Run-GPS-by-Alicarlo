@@ -20,6 +20,16 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
     // Implementa aquí la lógica para mostrar la notificación en la web
   }
 
+	async checkNotificationPermission(): Promise<void> {
+    throw new Error('Method not implemented.');
+    // Implementa aquí la lógica para mostrar la notificación en la web
+  }
+
+	async openNotificationSettings(): Promise<void> {
+    throw new Error('Method not implemented.');
+    // Implementa aquí la lógica para mostrar la notificación en la web
+  }
+
 	async checkPermissionsService(options: { value: boolean }): Promise<{ value: boolean }> {
 		return options;
   }

@@ -187,7 +187,7 @@ public class BackgroundrunPlugin extends Plugin {
 			ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
 		} else {
 			// Permission already granted
-				JSObject ret = new JSObject();
+			JSObject ret = new JSObject();
 			ret.put("message", "granted");
 			call.resolve(ret);
 		}
@@ -201,9 +201,29 @@ public class BackgroundrunPlugin extends Plugin {
 		} else {
 			// Permission already granted
 			JSObject ret = new JSObject();
-			ret.put("status", "granted");
+			ret.put("message", "granted");
 			call.resolve(ret);
 		}
+	}
+
+	@PluginMethod
+	public void checkNotificationPermission(PluginCall call) {
+		JSObject ret = new JSObject();
+		if (hasPermission(android.Manifest.permission.ACCESS_NOTIFICATION_POLICY)) {
+			ret.put("message", "Permission granted");
+		} else {
+			ret.put("message", "Permission not granted");
+		}
+		call.resolve(ret);
+	}
+
+	@PluginMethod
+	public void openNotificationSettings(PluginCall call) {
+		Intent intent = new Intent();
+		intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+		intent.putExtra(Settings.EXTRA_APP_PACKAGE, getContext().getPackageName());
+		startActivity(intent);
+		call.success();
 	}
 
 	// Method used
@@ -314,9 +334,13 @@ public class BackgroundrunPlugin extends Plugin {
 			messageFormat("The URL is not valid.", call);
 			return;
 		}
-			
+		
+		Log.e("BackgroundrunPlugin", "entro7000 entraaaaaaa"+timerGps);
+		if (timerGps < 30000) {
+			messageFormat("The minimum time required is 30,000 (30 seconds).", call);
+			return;
+		}
 
-		Log.e("BackgroundrunPlugin", "entro9999:"+url);
 		JSObject data = new JSObject();
 		data.put("url", url);
 		data.put("id1", id1);
@@ -331,10 +355,9 @@ public class BackgroundrunPlugin extends Plugin {
 		
 		Context context = getContext();
 		BackgroundService service = new BackgroundService(data, context);
-		Log.e("BackgroundrunPlugin", "entro7001"+context);
-		Log.e("BackgroundrunPlugin", "entro7009"+callbacks);
+		Log.e("BackgroundrunPlugin", +context);
+		Log.e("BackgroundrunPlugin",+callbacks);
     if (context != null) {
-			Log.e("BackgroundrunPlugin", "entro7002");
 			if (callbacks == null) {
 				Intent intent = new Intent(context, BackgroundService.class);
 				intent.setAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);

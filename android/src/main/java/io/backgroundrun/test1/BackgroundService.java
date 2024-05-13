@@ -149,10 +149,21 @@ public class BackgroundService extends Service {
     return timeShow;
   }
 
+	private Handler handler2 = new Handler();
+    private Runnable runnable2 = new Runnable() {
+        @Override
+        public void run() {
+						Log.d("BackgroundrunPlugin", "RUUNABLE 2");
+						updateNotification(2);
+            handler.postDelayed(this, 5000); // Actualizar cada segundo // 5min 300000
+        }
+    };
+
 		private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
+						int timer = BackgroundService.getTimerGps();
 						/*int timer = BackgroundService.getTimerGps();
 						if (timerCounter >= timer) {
 							Log.d("BackgroundrunPlugin", "VEO EL TIME");
@@ -161,12 +172,12 @@ public class BackgroundService extends Service {
 						}else{
 							timerCounter += 1;
 						}*/
-						Log.d("BackgroundrunPlugin", "runnable estro");
-						updateNotification();
-						
+						handler.removeCallbacks(runnable2);
+						updateNotification(1);
+						Log.d("BackgroundrunPlugin", "TIMER GPS ADD:"+timer);
 						// int timer = BackgroundService.getTimerGps();
 						// Log.d("BackgroundrunPlugin", "TIMER GPS ADD"+timer);
-            handler.postDelayed(this, 30000); // Actualizar cada segundo // 5min 300000
+            handler.postDelayed(this, timer); // Actualizar cada segundo // 5min 300000
         }
     };
 
@@ -204,7 +215,7 @@ private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
                     .build();
 
             notificationManager.notify(NOTIFICATION_ID, notification);
-						updateNotification();
+						// updateNotification();
         }
 				} catch (Exception e) {
              e.printStackTrace();
@@ -228,7 +239,6 @@ private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 @Override
 public int onStartCommand(Intent intent, int flags, int startId) {
 	super.onStartCommand(intent, flags, startId);
-	Log.d("BackgroundrunPlugin", "Onstart command");
 		// Detener el servicio cuando se presiona la notificación
 		if (intent != null && "STOP_SERVICE".equals(intent.getAction())) {
 		// Intent broadcastIntent = new Intent("OPEN_MY_APP"); // Funciona con el  broadcaster
@@ -255,6 +265,7 @@ public int onStartCommand(Intent intent, int flags, int startId) {
             Log.d("BackgroundService", "URL recibida: " + url);
         }
     }*/
+		
 		return START_STICKY;
 }
 
@@ -343,15 +354,15 @@ private PendingIntent getPendingIntent(Context context) {
 			.setSound(null) // Esta línea desactiva el sonido de la notificación
 			// .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Stop Service", pendingStopServiceIntent) 	// Funciona con el  broadcaster
 			.setContentIntent(contentIntent); 	// Funciona sin el  broadcaster
-			int timer = BackgroundService.getTimerGps();
-			timerCounter = timer;
 			// updateNotification();
-			// updateNotification();
-			handler.postDelayed(runnable, 1000); // Iniciar el contad
+			// handler.postDelayed(runnable, 100); // Iniciar el contad
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 				notificationBuilder.setChannelId(CHANNEL_ID);
 			}
-
+			// updateNotification();
+			handler.postDelayed(runnable2, 20);
+			int timer = BackgroundService.getTimerGps();
+			handler.postDelayed(runnable, 1000); // Iniciar el contad
 
     }
 
@@ -377,8 +388,8 @@ private PendingIntent getPendingIntent(Context context) {
         super.onDestroy();
 				Log.d("BackgroundrunPlugin", "entra el onDestroy");
 				// Asegúrate de anular el registro del receptor de transmisiones
-				// stopLocationUpdates();
-        // handler.removeCallbacks(runnable); // Detener el contador al destruir el servicio;
+				stopLocationUpdates();
+        handler.removeCallbacks(runnable); // Detener el contador al destruir el servicio;
 				// Funciona para el broadcaster unregisterReceiver(broadcastReceiver);
 
     }
@@ -400,8 +411,14 @@ private PendingIntent getPendingIntent(Context context) {
 					}
 			}
 
-    private void updateNotification() {
-					
+    private void updateNotification(int flag) {
+				if(flag ==2) {
+						Notification notification = notificationBuilder.build();
+      			startForeground(NOTIFICATION_ID, notification);
+						handler.removeCallbacks(runnable2);
+					 // Notification notification = notificationBuilder.build();
+          // startForeground(NOTIFICATION_ID, notification);
+				}else{ 
 
 							Log.d("BackgroundrunPlugin", "VEO EL TIME");
 				   //if (counter >= 1000) {
@@ -421,13 +438,16 @@ private PendingIntent getPendingIntent(Context context) {
 
 		// Verificar si se tienen permisos para acceder a la ubicación
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-			
-			int timer = BackgroundService.getTimerGps();
-			if (timerCounter < timer) {
-				// timerCounter = 0;
-				timerCounter += 1;
+			/*	int timer = BackgroundService.getTimerGps();
+			if (timerCounter >= timer) {
+				timerCounter = 0;
 			}else{
-						Log.d("BackgroundrunPlugin", "update101");
+				timerCounter += 1;
+			}*/
+			
+
+			Log.d("BackgroundrunPlugin", "update101");
+			
         // Obtener la ubicación actual
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -440,14 +460,17 @@ private PendingIntent getPendingIntent(Context context) {
 								Log.e("BackgroundrunPlugin", "urk gps:"+url);
                 // Actualizar la notificación con la ubicación actual
 								boolean coordinatesShow = BackgroundService.getCoordinatesShow();
+								Log.e("BackgroundrunPlugin", "show coordinates:"+coordinatesShow);
 								final String coordinatesNotification = coordinatesShow == true ? location.getLatitude() + ", " + location.getLongitude() : ""; 
 
 								boolean timeShow = BackgroundService.getTimeShow();
 								final String timeNotification = timeShow == true ? formattedDate : ""; 
 
                 notificationBuilder.setContentText("" + coordinatesNotification + " "+ timeNotification);
-                Notification notification = notificationBuilder.build();
-                startForeground(NOTIFICATION_ID, notification);
+								Notification notification = notificationBuilder.build();
+      					startForeground(NOTIFICATION_ID, notification);
+                // Notification notification = notificationBuilder.build();
+                // startForeground(NOTIFICATION_ID, notification);
 
                 // Detener las actualizaciones de la ubicación después de obtenerla
                 if (locationManager != null && locationListener != null) {
@@ -459,7 +482,6 @@ private PendingIntent getPendingIntent(Context context) {
 								String id4 = BackgroundService.getId4();
 
 								new CallEndpointService(location.getLatitude(), location.getLongitude(), formattedDate2, urlSend, id1, id2, id3, id4).execute();
-								timerCounter = 0;
             }
 
             @Override
@@ -485,9 +507,9 @@ private PendingIntent getPendingIntent(Context context) {
 					// Super PRIORITY_HIGH_ACCURACY
 					locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 0, locationListener);
     		}
-			Log.d("BackgroundrunPlugin", "update100");  			
-			}
-	
+			// Log.d("BackgroundrunPlugin", "update100");  
+		
+				}
     }
 
 
