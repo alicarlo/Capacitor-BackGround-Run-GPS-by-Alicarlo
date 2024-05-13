@@ -170,7 +170,6 @@ public class BackgroundService extends Service {
         }
 			} catch (Exception e) {
 				e.printStackTrace();
-				Log.e(e.getMessage());
       }
     }
 	};
