@@ -1,7 +1,7 @@
 {
   "name": "backgroundrun",
-  "version": "0.0.88",
-  "description": "test background",
+  "version": "0.0.90",
+  "description": "Background run gps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -18,10 +18,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alicarlo/testBackGroundRun.git.git"
+    "url": "git+https://github.com/alicarlo/BackGround-Run-GPS.git.git"
   },
   "bugs": {
-    "url": "https://github.com/alicarlo/testBackGroundRun.git/issues"
+    "url": "https://github.com/alicarlo/BackGround-Run-GPS.git/issues"
   },
   "keywords": [
     "capacitor",
@@ -78,7 +78,6 @@
   },
   "dependencies": {
     "@capacitor/app": "^6.0.0",
-    "@capacitor/local-notifications": "^6.0.0",
-    "backgroundrun": "file:backgroundrun-0.0.87.tgz"
+    "@capacitor/local-notifications": "^6.0.0"
   }
 }
