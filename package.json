@@ -1,6 +1,6 @@
 {
   "name": "backgroundrun",
-  "version": "0.0.90",
+  "version": "0.0.91",
   "description": "Background run gps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -18,10 +18,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alicarlo/BackGround-Run-GPS.git.git"
+    "url": "git+https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo.git.git"
   },
   "bugs": {
-    "url": "https://github.com/alicarlo/BackGround-Run-GPS.git/issues"
+    "url": "https://github.com/alicarlo/Capacitor-BackGround-Run-GPS-by-Alicarlo.git/issues"
   },
   "keywords": [
     "capacitor",
