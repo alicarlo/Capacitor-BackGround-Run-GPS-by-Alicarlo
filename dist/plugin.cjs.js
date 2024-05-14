@@ -35,6 +35,10 @@ class backgroundrunWeb extends core.WebPlugin {
         throw new Error('Method not implemented.');
         // Implementa aquí la lógica para mostrar la notificación en la web
     }
+    async openLocationSettings() {
+        throw new Error('Method not implemented.');
+        // Implementa aquí la lógica para mostrar la notificación en la web
+    }
     async requestBatteryOptimizations() {
         throw new Error('Method not implemented.');
         // Implementa aquí la lógica para mostrar la notificación en la web

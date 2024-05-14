@@ -16,6 +16,7 @@ export declare class backgroundrunWeb extends WebPlugin implements backgroundrun
         value: boolean;
     }>;
     ignoringBatteryOptimizationsService(): Promise<void>;
+    openLocationSettings(): Promise<void>;
     requestBatteryOptimizations(): Promise<void>;
     requestNotificationPermission(): Promise<void>;
     checkUsageStatsNotificationPausePermission(options: {

@@ -180,6 +180,22 @@ public class BackgroundrunPlugin extends Plugin {
 		}
 	}
 
+	@PluginMethod
+	public void openLocationSettings(PluginCall call) {
+		JSObject ret = new JSObject();
+		try {
+				Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+				Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
+				intent.setData(uri);
+				getContext().startActivity(intent);
+				ret.put("message", "Success");
+				call.resolve(ret);
+		} catch (Exception e) {
+				ret.put("message", "Error: " + e.getMessage());
+				call.reject("Error opening location settings", e);
+		}
+	}
+
 	// Method used
 	@PluginMethod
 	public void pauseNotificationPermission(PluginCall call) {
@@ -207,15 +223,17 @@ public class BackgroundrunPlugin extends Plugin {
 	}
 
 	@PluginMethod
-	public void checkNotificationPermission(PluginCall call) {
-		JSObject ret = new JSObject();
-		if (hasPermission(android.Manifest.permission.ACCESS_NOTIFICATION_POLICY)) {
-			ret.put("message", "Permission granted");
-		} else {
-			ret.put("message", "Permission not granted");
-		}
-		call.resolve(ret);
-	}
+public void checkNotificationPermission(PluginCall call) {
+    JSObject ret = new JSObject();
+    Context context = getContext();
+    int permission = ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS);
+    if (permission == PackageManager.PERMISSION_GRANTED) {
+        ret.put("message", "Permission granted");
+    } else {
+        ret.put("message", "Permission not granted");
+    }
+    call.resolve(ret);
+}
 
 	@PluginMethod
 	public void openNotificationSettings(PluginCall call) {

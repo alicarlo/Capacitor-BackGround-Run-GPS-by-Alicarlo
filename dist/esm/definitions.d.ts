@@ -28,6 +28,7 @@ export interface backgroundrunPlugin {
     openNotificationSettings(): Promise<void>;
     acquireWakeLock(): Promise<void>;
     releaseWakeLock(): Promise<void>;
+    openLocationSettings(): Promise<void>;
 }
 export interface GpsOptions {
     url: String;

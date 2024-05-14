@@ -195,6 +195,7 @@ npx cap sync
 * [`openNotificationSettings()`](#opennotificationsettings)
 * [`acquireWakeLock()`](#acquirewakelock)
 * [`releaseWakeLock()`](#releasewakelock)
+* [`openLocationSettings()`](#openlocationsettings)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -344,6 +345,15 @@ acquireWakeLock() => Promise<void>
 
 ```typescript
 releaseWakeLock() => Promise<void>
+```
+
+--------------------
+
+
+### openLocationSettings()
+
+```typescript
+openLocationSettings() => Promise<void>
 ```
 
 --------------------
