@@ -290,7 +290,7 @@ public class BackgroundrunPlugin extends Plugin {
   }
 	*/
 
-	@PluginMethod
+/*	@PluginMethod
 public void addListener(PluginCall call) {
     String eventName = call.getString("eventName");
 
@@ -300,6 +300,18 @@ public void addListener(PluginCall call) {
         JSObject eventData = new JSObject();
         notifyListeners(eventName, eventData);
     }
+
+    call.resolve();
+}*/
+
+@PluginMethod
+public void addAppResumedListener(PluginCall call) {
+    getApp().addResumeListener(new Runnable() {
+        @Override
+        public void run() {
+            notifyListeners("appResumed", new JSObject());
+        }
+    });
 
     call.resolve();
 }

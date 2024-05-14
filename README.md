@@ -183,7 +183,7 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
-* [`addListener(string, ...)`](#addlistenerstring-)
+* [`addAppResumedListener()`](#addappresumedlistener)
 * [`showNotificationOnAppClose(...)`](#shownotificationonappclose)
 * [`stopNotificationService()`](#stopnotificationservice)
 * [`checkPermissionsService(...)`](#checkpermissionsservice)
@@ -219,16 +219,11 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 --------------------
 
 
-### addListener(string, ...)
+### addAppResumedListener()
 
 ```typescript
-addListener(eventName: string, listenerFunc: () => void) => void
+addAppResumedListener() => Promise<void>
 ```
-
-| Param              | Type                       |
-| ------------------ | -------------------------- |
-| **`eventName`**    | <code>string</code>        |
-| **`listenerFunc`** | <code>() =&gt; void</code> |
 
 --------------------
 

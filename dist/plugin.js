@@ -39,14 +39,11 @@ var capacitorbackgroundrun = (function (exports, core) {
         /*async addAppResumedListener(callback: () => void): Promise<void> {
             callback();
         }*/
-        addListener(eventName, listenerFunc) {
-            const pluginListenerHandle = {
-                remove: () => {
-                    window.removeEventListener(eventName, listenerFunc);
-                    return Promise.resolve();
-                }
-            };
-            return Promise.resolve(pluginListenerHandle);
+        async addAppResumedListener() {
+            window.addEventListener('appResumed', () => {
+                this.notifyListeners('appResumed', {});
+            });
+            return Promise.resolve();
         }
         async requestBatteryOptimizations() {
             throw new Error('Method not implemented.');
