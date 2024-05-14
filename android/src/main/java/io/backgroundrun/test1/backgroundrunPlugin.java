@@ -207,17 +207,17 @@ public class BackgroundrunPlugin extends Plugin {
 	}
 
 	@PluginMethod
-	public void checkNotificationPermission(PluginCall call) {
-			JSObject ret = new JSObject();
-			Context context = getContext();
-			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-			if (notificationManager != null && notificationManager.isNotificationPolicyAccessGranted()) {
-					ret.put("message", "Permission granted");
-			} else {
-					ret.put("message", "Permission not granted");
-			}
-			call.resolve(ret);
-	}
+public void checkNotificationPermission(PluginCall call) {
+    JSObject ret = new JSObject();
+    Context context = getContext();
+    int permission = ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS);
+    if (permission == PackageManager.PERMISSION_GRANTED) {
+        ret.put("message", "Permission granted");
+    } else {
+        ret.put("message", "Permission not granted");
+    }
+    call.resolve(ret);
+}
 
 	@PluginMethod
 	public void openNotificationSettings(PluginCall call) {
