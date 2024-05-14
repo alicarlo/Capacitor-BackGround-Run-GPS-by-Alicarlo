@@ -44,10 +44,10 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
     // Implementa aquí la lógica para mostrar la notificación en la web
   }
 
-	async addAppResumedListener(): Promise<void> {
-    throw new Error('Method not implemented.');
-    // Implementa aquí la lógica para mostrar la notificación en la web
-  }
+
+	async addAppResumedListener(callback: () => void): Promise<void> {
+		callback();
+	}
 
 	async requestBatteryOptimizations(): Promise<void> {
     throw new Error('Method not implemented.');
