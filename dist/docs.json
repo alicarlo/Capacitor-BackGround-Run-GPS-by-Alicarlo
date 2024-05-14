@@ -197,22 +197,6 @@
         "docs": "",
         "complexTypes": [],
         "slug": "openlocationsettings"
-      },
-      {
-        "name": "addAppResumedListener",
-        "signature": "(callback: () => void) => Promise<void>",
-        "parameters": [
-          {
-            "name": "callback",
-            "docs": "",
-            "type": "() => void"
-          }
-        ],
-        "returns": "Promise<void>",
-        "tags": [],
-        "docs": "",
-        "complexTypes": [],
-        "slug": "addappresumedlistener"
       }
     ],
     "properties": []

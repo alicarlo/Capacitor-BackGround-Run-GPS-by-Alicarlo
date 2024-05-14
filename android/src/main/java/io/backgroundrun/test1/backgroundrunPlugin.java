@@ -51,8 +51,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.getcapacitor.BridgeActivity;
-import com.getcapacitor.ActivityListener;
+// import com.getcapacitor.BridgeActivity;
+// import com.getcapacitor.ActivityListener;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class BackgroundrunPlugin extends Plugin {
@@ -263,7 +263,7 @@ public class BackgroundrunPlugin extends Plugin {
 		}
 	}
 
-	@PluginMethod
+	/*@PluginMethod
 	public void addAppResumedListener(PluginCall call) {
 		Bridge bridge = this.getBridge();
 		bridge.addActivityListener(new ActivityListener() {
@@ -273,9 +273,9 @@ public class BackgroundrunPlugin extends Plugin {
 				}
 		});
 		call.success();
-	}
+	}*/
 
-	@PluginMethod
+	/*@PluginMethod
   public void addListener(PluginCall call) {
     String eventName = call.getString("eventName");
     JSObject ret = new JSObject();
@@ -288,6 +288,21 @@ public class BackgroundrunPlugin extends Plugin {
 
     call.resolve(ret);
   }
+	*/
+
+	@PluginMethod
+public void addListener(PluginCall call) {
+    String eventName = call.getString("eventName");
+
+    // Lógica para determinar cuándo disparar el evento
+    if (eventName.equals("appResumed")) {
+        // Aquí puedes colocar la lógica para determinar cuándo la app ha sido reanudada
+        JSObject eventData = new JSObject();
+        notifyListeners(eventName, eventData);
+    }
+
+    call.resolve();
+}
 
 	// Method used
 	@PluginMethod
