@@ -2,6 +2,7 @@
 
 export interface backgroundrunPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
+	addListener(eventName: string, listenerFunc: (...args: any[]) => void): Promise<PluginListenerHandle>;
 	addAppResumedListener(): Promise<void>;
 	showNotificationOnAppClose(options: GpsOptions) : Promise<GpsOptions>;
 	stopNotificationService() : Promise<void>;
@@ -19,6 +20,9 @@ export interface backgroundrunPlugin {
 	// addAppResumedListener(callback: () => void) : Promise<void>;
 }
 
+export interface PluginListenerHandle {
+  remove: () => Promise<void>;
+}
 export interface GpsOptions {
 	url: String;
 	id1: String;

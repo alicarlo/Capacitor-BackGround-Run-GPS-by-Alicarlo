@@ -1,4 +1,4 @@
-import { WebPlugin} from '@capacitor/core';
+import { PluginListenerHandle, WebPlugin} from '@capacitor/core';
 // import { App } from '@capacitor/app';
 // import { LocalNotifications, LocalNotificationSchema } from '@capacitor/local-notifications';
 // const { App, LocalNotifications } = Plugins;
@@ -54,6 +54,16 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
       this.notifyListeners('appResumed', {});
     });
     return Promise.resolve();
+  }
+
+	async addListener(eventName: string, listenerFunc: (...args: any[]) => void): Promise<PluginListenerHandle> {
+    const pluginListenerHandle: PluginListenerHandle = {
+      remove: () => {
+        window.removeEventListener(eventName, listenerFunc);
+        return Promise.resolve();
+      }
+    };
+    return Promise.resolve(pluginListenerHandle);
   }
 
 	async requestBatteryOptimizations(): Promise<void> {

@@ -45,6 +45,15 @@ var capacitorbackgroundrun = (function (exports, core) {
             });
             return Promise.resolve();
         }
+        async addListener(eventName, listenerFunc) {
+            const pluginListenerHandle = {
+                remove: () => {
+                    window.removeEventListener(eventName, listenerFunc);
+                    return Promise.resolve();
+                }
+            };
+            return Promise.resolve(pluginListenerHandle);
+        }
         async requestBatteryOptimizations() {
             throw new Error('Method not implemented.');
             // Implementa aquí la lógica para mostrar la notificación en la web
