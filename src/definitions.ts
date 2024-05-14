@@ -16,7 +16,6 @@ export interface backgroundrunPlugin {
 	releaseWakeLock() : Promise<void>;
 	openLocationSettings() : Promise<void>;
 	addAppResumedListener() : Promise<void>;
-	removeAppResumedListener() : Promise<void>;
 }
 
 export interface GpsOptions {

@@ -186,16 +186,6 @@
         "docs": "",
         "complexTypes": [],
         "slug": "addappresumedlistener"
-      },
-      {
-        "name": "removeAppResumedListener",
-        "signature": "() => Promise<void>",
-        "parameters": [],
-        "returns": "Promise<void>",
-        "tags": [],
-        "docs": "",
-        "complexTypes": [],
-        "slug": "removeappresumedlistener"
       }
     ],
     "properties": []
