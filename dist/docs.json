@@ -22,25 +22,14 @@
         "slug": "echo"
       },
       {
-        "name": "addListener",
-        "signature": "(eventName: string, listenerFunc: () => void) => void",
-        "parameters": [
-          {
-            "name": "eventName",
-            "docs": "",
-            "type": "string"
-          },
-          {
-            "name": "listenerFunc",
-            "docs": "",
-            "type": "() => void"
-          }
-        ],
-        "returns": "void",
+        "name": "addAppResumedListener",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
         "tags": [],
         "docs": "",
         "complexTypes": [],
-        "slug": "addlistenerstring-"
+        "slug": "addappresumedlistener"
       },
       {
         "name": "showNotificationOnAppClose",

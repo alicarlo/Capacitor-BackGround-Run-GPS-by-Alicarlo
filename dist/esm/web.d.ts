@@ -1,4 +1,4 @@
-import { WebPlugin, PluginListenerHandle } from '@capacitor/core';
+import { WebPlugin } from '@capacitor/core';
 import type { backgroundrunPlugin, GpsOptions } from './definitions';
 export declare class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
     echo(options: {
@@ -17,7 +17,7 @@ export declare class backgroundrunWeb extends WebPlugin implements backgroundrun
     }>;
     ignoringBatteryOptimizationsService(): Promise<void>;
     openLocationSettings(): Promise<void>;
-    addListener(eventName: string, listenerFunc: (...args: any[]) => void): Promise<PluginListenerHandle>;
+    addAppResumedListener(): Promise<void>;
     requestBatteryOptimizations(): Promise<void>;
     requestNotificationPermission(): Promise<void>;
     checkUsageStatsNotificationPausePermission(options: {
