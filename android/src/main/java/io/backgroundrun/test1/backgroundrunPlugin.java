@@ -52,6 +52,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 // import com.getcapacitor.BridgeActivity;
 // import com.getcapacitor.ActivityListener;
 
