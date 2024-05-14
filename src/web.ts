@@ -45,9 +45,9 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
   }
 
 
-	async addAppResumedListener(callback: () => void): Promise<void> {
+	/*async addAppResumedListener(callback: () => void): Promise<void> {
 		callback();
-	}
+	}*/
 
 	addListener(eventName: string, listenerFunc: (...args: any[]) => void): Promise<PluginListenerHandle> {
     const pluginListenerHandle: PluginListenerHandle = {

@@ -30,9 +30,9 @@ export class backgroundrunWeb extends WebPlugin {
         throw new Error('Method not implemented.');
         // Implementa aquí la lógica para mostrar la notificación en la web
     }
-    async addAppResumedListener(callback) {
+    /*async addAppResumedListener(callback: () => void): Promise<void> {
         callback();
-    }
+    }*/
     addListener(eventName, listenerFunc) {
         const pluginListenerHandle = {
             remove: () => {
