@@ -318,10 +318,34 @@ public void addAppResumedListener(PluginCall call) {
 	public void load2() {
 			app2 = (Application) getContext().getApplicationContext();
 			callbacks2 = new Application.ActivityLifecycleCallbacks() {
-					public void onActivityResumed(@NonNull Activity activity) {
-							JSObject eventData = new JSObject();
-							notifyListeners("appResumed", eventData);
-					}
+    public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+        // Implementación de onActivityCreated
+    }
+
+    public void onActivityStarted(@NonNull Activity activity) {
+        // Implementación de onActivityStarted
+    }
+
+    public void onActivityResumed(@NonNull Activity activity) {
+        JSObject eventData = new JSObject();
+        notifyListeners("appResumed", eventData);
+    }
+
+    public void onActivityPaused(@NonNull Activity activity) {
+        // Implementación de onActivityPaused
+    }
+
+    public void onActivityStopped(@NonNull Activity activity) {
+        // Implementación de onActivityStopped
+    }
+
+    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
+        // Implementación de onActivitySaveInstanceState
+    }
+
+    public void onActivityDestroyed(@NonNull Activity activity) {
+        // Implementación de onActivityDestroyed
+    }
 			};
 			app2.registerActivityLifecycleCallbacks(callbacks2);
 	}
