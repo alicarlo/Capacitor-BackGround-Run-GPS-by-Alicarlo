@@ -182,9 +182,18 @@ public class BackgroundrunPlugin extends Plugin {
 
 	@PluginMethod
 	public void openLocationSettings(PluginCall call) {
-			Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-			getContext().startActivity(intent);
-			call.resolve();
+		JSObject ret = new JSObject();
+		try {
+				Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+				Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
+				intent.setData(uri);
+				getContext().startActivity(intent);
+				ret.put("message", "Success");
+				call.resolve(ret);
+		} catch (Exception e) {
+				ret.put("message", "Error: " + e.getMessage());
+				call.reject("Error opening location settings", e);
+		}
 	}
 
 	// Method used
