@@ -52,6 +52,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.getcapacitor.BridgeActivity.ActivityListener;
+import com.getcapacitor.ActivityListener;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class BackgroundrunPlugin extends Plugin {
