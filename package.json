@@ -1,6 +1,6 @@
 {
   "name": "backgroundrun",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Background run gps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
