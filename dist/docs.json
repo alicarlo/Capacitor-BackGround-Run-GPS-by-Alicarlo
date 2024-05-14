@@ -179,8 +179,14 @@
       },
       {
         "name": "addAppResumedListener",
-        "signature": "() => Promise<void>",
-        "parameters": [],
+        "signature": "(callback: () => void) => Promise<void>",
+        "parameters": [
+          {
+            "name": "callback",
+            "docs": "",
+            "type": "() => void"
+          }
+        ],
         "returns": "Promise<void>",
         "tags": [],
         "docs": "",
