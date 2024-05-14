@@ -306,6 +306,7 @@ public void addListener(PluginCall call) {
 
 @PluginMethod
 public void addAppResumedListener(PluginCall call) {
+	Context context = getContext();
 	if (context == null) {
     call.reject("Unable to get context");
     return;
