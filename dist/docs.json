@@ -22,6 +22,29 @@
         "slug": "echo"
       },
       {
+        "name": "addListener",
+        "signature": "(eventName: string, listenerFunc: (...args: any[]) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "string"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(...args: any[]) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "PluginListenerHandle"
+        ],
+        "slug": "addlistenerstring-"
+      },
+      {
         "name": "addAppResumedListener",
         "signature": "() => Promise<void>",
         "parameters": [],
@@ -191,6 +214,22 @@
     "properties": []
   },
   "interfaces": [
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
     {
       "name": "GpsOptions",
       "slug": "gpsoptions",
