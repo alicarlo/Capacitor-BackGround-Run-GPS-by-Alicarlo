@@ -196,6 +196,8 @@ npx cap sync
 * [`acquireWakeLock()`](#acquirewakelock)
 * [`releaseWakeLock()`](#releasewakelock)
 * [`openLocationSettings()`](#openlocationsettings)
+* [`addAppResumedListener()`](#addappresumedlistener)
+* [`removeAppResumedListener()`](#removeappresumedlistener)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -354,6 +356,24 @@ releaseWakeLock() => Promise<void>
 
 ```typescript
 openLocationSettings() => Promise<void>
+```
+
+--------------------
+
+
+### addAppResumedListener()
+
+```typescript
+addAppResumedListener() => Promise<void>
+```
+
+--------------------
+
+
+### removeAppResumedListener()
+
+```typescript
+removeAppResumedListener() => Promise<void>
 ```
 
 --------------------
