@@ -63,7 +63,7 @@ public class BackgroundrunPlugin extends Plugin {
 	private static final int REQUEST_NOTIFICATION_PERMISSION = 123;
 	public static final String  msg1 = "To enable this feature, you need to grant the necessary permissions in the app settings. Do you want to go to settings now?";
 	public static final String  msg2 = "Background location permission is required, you need to grant the allow location permissions all the time. Do you want to go to settings now?";
-	private List<AppResumedListener> appResumedListeners = new ArrayList<>();
+
 
 	public void load(Context context, Intent intent, int number) {
 		app = (Application) getContext().getApplicationContext();
@@ -261,29 +261,11 @@ public class BackgroundrunPlugin extends Plugin {
 
 	@PluginMethod
 	public void addAppResumedListener(PluginCall call) {
-		AppResumedListener listener = () -> {
-				notifyListeners("appResumed", new JSObject());
-		};
-		appResumedListeners.add(listener);
+		notifyListeners("appResumed", new JSObject());
 		call.success();
 	}
 
-	@PluginMethod
-	public void removeAppResumedListener(PluginCall call) {
-			appResumedListeners.clear();
-			call.success();
-	}
 
-	protected void handleOnResume() {
-		super.handleOnResume();
-		for (AppResumedListener listener : appResumedListeners) {
-				listener.onAppResumed();
-		}
-	}
-
-	public interface AppResumedListener {
-			void onAppResumed();
-	}
 
 	// Method used
 	@PluginMethod
