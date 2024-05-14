@@ -47,6 +47,7 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class BackgroundrunPlugin extends Plugin {
