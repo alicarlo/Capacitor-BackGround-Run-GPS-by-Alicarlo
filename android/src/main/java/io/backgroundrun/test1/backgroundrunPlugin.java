@@ -206,15 +206,17 @@ public class BackgroundrunPlugin extends Plugin {
 		}
 	}
 
+
 	@PluginMethod
 	public void checkNotificationPermission(PluginCall call) {
-		JSObject ret = new JSObject();
-		if (hasPermission(android.Manifest.permission.ACCESS_NOTIFICATION_POLICY)) {
-			ret.put("message", "Permission granted");
-		} else {
-			ret.put("message", "Permission not granted");
-		}
-		call.resolve(ret);
+			JSObject ret = new JSObject();
+			NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+			if (notificationManager != null && notificationManager.isNotificationPolicyAccessGranted()) {
+					ret.put("message", "Permission granted");
+			} else {
+					ret.put("message", "Permission not granted");
+			}
+			call.resolve(ret);
 	}
 
 	@PluginMethod
