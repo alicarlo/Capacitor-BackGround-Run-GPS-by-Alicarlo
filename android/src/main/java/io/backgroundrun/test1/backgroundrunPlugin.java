@@ -62,6 +62,8 @@ public class BackgroundrunPlugin extends Plugin {
 	private boolean appIsInForeground = false;
 	private static Application app;
 	private static Application.ActivityLifecycleCallbacks callbacks;
+	private Application app2;
+    private Application.ActivityLifecycleCallbacks callbacks2;
 	private static final int REQUEST_LOCATION_PERMISSION = 1001;
 	private static final int REQUEST_BACKGROUND_LOCATION_PERMISSION = 1;
 	private static final int REQUEST_NOTIFICATION_PERMISSION = 123;
@@ -306,20 +308,28 @@ public void addListener(PluginCall call) {
 
 @PluginMethod
 public void addAppResumedListener(PluginCall call) {
-	Context context = getContext();
-	if (context == null) {
-    call.reject("Unable to get context");
-    return;
-	}
-    context.addResumeListener(new Runnable() {
-        @Override
-        public void run() {
-            notifyListeners("appResumed", new JSObject());
-        }
-    });
-
-    call.resolve();
+	load2()
+	notifyListeners("appResumed", new JSObject());
+  call.success();
 }
+
+
+	public void load2() {
+			app2 = (Application) getContext().getApplicationContext();
+			callbacks2 = new Application.ActivityLifecycleCallbacks() {
+					public void onActivityResumed(@NonNull Activity activity) {
+							JSObject eventData = new JSObject();
+							notifyListeners("appResumed", eventData);
+					}
+			};
+			app2.registerActivityLifecycleCallbacks(callbacks2);
+	}
+
+
+	public void unload2() {
+			app2.unregisterActivityLifecycleCallbacks(callbacks2);
+			app2 = null;
+	}
 
 	// Method used
 	@PluginMethod
