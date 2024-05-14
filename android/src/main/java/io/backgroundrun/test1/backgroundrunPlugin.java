@@ -306,7 +306,11 @@ public void addListener(PluginCall call) {
 
 @PluginMethod
 public void addAppResumedListener(PluginCall call) {
-    getApp().addResumeListener(new Runnable() {
+	if (context == null) {
+    call.reject("Unable to get context");
+    return;
+	}
+    context.addResumeListener(new Runnable() {
         @Override
         public void run() {
             notifyListeners("appResumed", new JSObject());
