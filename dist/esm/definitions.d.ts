@@ -4,6 +4,7 @@ export interface backgroundrunPlugin {
     }): Promise<{
         value: string;
     }>;
+    addListener(eventName: string, listenerFunc: () => void): void;
     showNotificationOnAppClose(options: GpsOptions): Promise<GpsOptions>;
     stopNotificationService(): Promise<void>;
     checkPermissionsService(options: {
