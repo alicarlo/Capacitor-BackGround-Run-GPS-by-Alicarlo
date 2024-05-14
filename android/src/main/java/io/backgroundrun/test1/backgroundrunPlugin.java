@@ -308,7 +308,7 @@ public void addListener(PluginCall call) {
 
 @PluginMethod
 public void addAppResumedListener(PluginCall call) {
-	load2()
+	load2();
 	notifyListeners("appResumed", new JSObject());
   call.success();
 }
