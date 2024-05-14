@@ -61,7 +61,8 @@ public class BackgroundrunPlugin extends Plugin {
 	private static final int REQUEST_NOTIFICATION_PERMISSION = 123;
 	public static final String  msg1 = "To enable this feature, you need to grant the necessary permissions in the app settings. Do you want to go to settings now?";
 	public static final String  msg2 = "Background location permission is required, you need to grant the allow location permissions all the time. Do you want to go to settings now?";
-	
+	private List<AppResumedListener> appResumedListeners = new ArrayList<>();
+
 	public void load(Context context, Intent intent, int number) {
 		app = (Application) getContext().getApplicationContext();
 		setApplication(app);
@@ -223,17 +224,17 @@ public class BackgroundrunPlugin extends Plugin {
 	}
 
 	@PluginMethod
-public void checkNotificationPermission(PluginCall call) {
-    JSObject ret = new JSObject();
-    Context context = getContext();
-    int permission = ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS);
-    if (permission == PackageManager.PERMISSION_GRANTED) {
-        ret.put("message", "Permission granted");
-    } else {
-        ret.put("message", "Permission not granted");
-    }
-    call.resolve(ret);
-}
+	public void checkNotificationPermission(PluginCall call) {
+			JSObject ret = new JSObject();
+			Context context = getContext();
+			int permission = ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS);
+			if (permission == PackageManager.PERMISSION_GRANTED) {
+					ret.put("message", "Permission granted");
+			} else {
+					ret.put("message", "Permission not granted");
+			}
+			call.resolve(ret);
+	}
 
 	@PluginMethod
 	public void openNotificationSettings(PluginCall call) {
@@ -254,6 +255,32 @@ public void checkNotificationPermission(PluginCall call) {
 		} catch (Exception e) {
 			call.error("Failed to open notification settings: " + e.getMessage());
 		}
+	}
+
+	@PluginMethod
+	public void addAppResumedListener(PluginCall call) {
+		AppResumedListener listener = () -> {
+				notifyListeners("appResumed", new JSObject());
+		};
+		appResumedListeners.add(listener);
+		call.success();
+	}
+
+	@PluginMethod
+	public void removeAppResumedListener(PluginCall call) {
+			appResumedListeners.clear();
+			call.success();
+	}
+
+	protected void handleOnResume() {
+		super.handleOnResume();
+		for (AppResumedListener listener : appResumedListeners) {
+				listener.onAppResumed();
+		}
+	}
+
+	public interface AppResumedListener {
+			void onAppResumed();
 	}
 
 	// Method used
