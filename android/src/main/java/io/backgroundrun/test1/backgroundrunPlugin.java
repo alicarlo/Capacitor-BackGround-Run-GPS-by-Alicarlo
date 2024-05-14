@@ -206,11 +206,11 @@ public class BackgroundrunPlugin extends Plugin {
 		}
 	}
 
-
 	@PluginMethod
 	public void checkNotificationPermission(PluginCall call) {
 			JSObject ret = new JSObject();
-			NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+			Context context = getContext();
+			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 			if (notificationManager != null && notificationManager.isNotificationPolicyAccessGranted()) {
 					ret.put("message", "Permission granted");
 			} else {
