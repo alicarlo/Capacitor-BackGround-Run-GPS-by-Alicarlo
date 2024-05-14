@@ -180,6 +180,13 @@ public class BackgroundrunPlugin extends Plugin {
 		}
 	}
 
+	@PluginMethod
+	public void openLocationSettings(PluginCall call) {
+			Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+			getContext().startActivity(intent);
+			call.resolve();
+	}
+
 	// Method used
 	@PluginMethod
 	public void pauseNotificationPermission(PluginCall call) {

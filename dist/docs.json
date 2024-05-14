@@ -166,6 +166,16 @@
         "docs": "",
         "complexTypes": [],
         "slug": "releasewakelock"
+      },
+      {
+        "name": "openLocationSettings",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "openlocationsettings"
       }
     ],
     "properties": []
