@@ -49,6 +49,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @CapacitorPlugin(name = "backgroundrun")
 public class BackgroundrunPlugin extends Plugin {
@@ -261,7 +263,13 @@ public class BackgroundrunPlugin extends Plugin {
 
 	@PluginMethod
 	public void addAppResumedListener(PluginCall call) {
-		notifyListeners("appResumed", new JSObject());
+		Bridge bridge = this.getBridge();
+		bridge.addActivityListener(new ActivityListener() {
+				@Override
+				public void onActivityResumed(Activity activity) {
+						notifyListeners("appResumed", new JSObject());
+				}
+		});
 		call.success();
 	}
 
