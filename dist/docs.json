@@ -22,6 +22,27 @@
         "slug": "echo"
       },
       {
+        "name": "addListener",
+        "signature": "(eventName: string, listenerFunc: () => void) => void",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "string"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "() => void"
+          }
+        ],
+        "returns": "void",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "addlistenerstring-"
+      },
+      {
         "name": "showNotificationOnAppClose",
         "signature": "(options: GpsOptions) => Promise<GpsOptions>",
         "parameters": [

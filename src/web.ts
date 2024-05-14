@@ -1,4 +1,4 @@
-import { WebPlugin } from '@capacitor/core';
+import { WebPlugin,PluginListenerHandle } from '@capacitor/core';
 // import { App } from '@capacitor/app';
 // import { LocalNotifications, LocalNotificationSchema } from '@capacitor/local-notifications';
 // const { App, LocalNotifications } = Plugins;
@@ -48,6 +48,17 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
 	async addAppResumedListener(callback: () => void): Promise<void> {
 		callback();
 	}
+
+	addListener(eventName: string, listenerFunc: (...args: any[]) => void): Promise<PluginListenerHandle> {
+    const pluginListenerHandle: PluginListenerHandle = {
+			remove: () => {
+					window.removeEventListener(eventName, listenerFunc);
+					return Promise.resolve();
+			}
+	};
+
+	return Promise.resolve(pluginListenerHandle);
+  }
 
 	async requestBatteryOptimizations(): Promise<void> {
     throw new Error('Method not implemented.');

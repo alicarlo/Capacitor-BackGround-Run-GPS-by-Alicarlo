@@ -265,7 +265,19 @@ public class BackgroundrunPlugin extends Plugin {
 		call.success();
 	}
 
+	@PluginMethod
+  public void addListener(PluginCall call) {
+    String eventName = call.getString("eventName");
+    JSObject ret = new JSObject();
+    ret.put("eventName", eventName);
 
+    // Registrar el listener y devolver la confirmación
+    bridge.registerListener(eventName, () -> {
+      notifyListeners(eventName, ret);
+    });
+
+    call.resolve(ret);
+  }
 
 	// Method used
 	@PluginMethod
