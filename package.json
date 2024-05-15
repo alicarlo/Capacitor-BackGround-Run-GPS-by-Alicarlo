@@ -1,6 +1,6 @@
 {
   "name": "backgroundrun",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "Background run gps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@capacitor/app": "^6.0.0",
-    "@capacitor/local-notifications": "^6.0.0"
+    "@capacitor/local-notifications": "^6.0.0",
+		"backgroundrun": "file:backgroundrun-1.1.18.tgz"
   }
 }
