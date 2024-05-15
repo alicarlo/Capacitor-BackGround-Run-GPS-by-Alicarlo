@@ -421,9 +421,9 @@ public void addAppResumedListener(PluginCall call) {
 	@PluginMethod
 	public void stopNotificationService(PluginCall call) {
 		Context context = getContext();
-		Log.i("Echo1", context);
-			Log.i("Echo2", app);
-				Log.i("Echo3", callbacks);
+		Log.i("Echo1", String.valueOf(context));
+    Log.i("Echo2", String.valueOf(app));
+    Log.i("Echo3", String.valueOf(callbacks));
     if (context != null) {
 			if (app != null && callbacks != null) {
 				app.unregisterActivityLifecycleCallbacks(callbacks);
