@@ -54,6 +54,10 @@ var capacitorbackgroundrun = (function (exports, core) {
             };
             return Promise.resolve(pluginListenerHandle);
         }
+        async clearAppResumedListener() {
+            throw new Error('Method not implemented.');
+            // Implementa aquí la lógica para mostrar la notificación en la web
+        }
         async requestBatteryOptimizations() {
             throw new Error('Method not implemented.');
             // Implementa aquí la lógica para mostrar la notificación en la web

@@ -55,6 +55,16 @@
         "slug": "addappresumedlistener"
       },
       {
+        "name": "clearAppResumedListener",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "clearappresumedlistener"
+      },
+      {
         "name": "showNotificationOnAppClose",
         "signature": "(options: GpsOptions) => Promise<GpsOptions>",
         "parameters": [

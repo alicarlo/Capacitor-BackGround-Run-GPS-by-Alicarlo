@@ -315,6 +315,13 @@ public void addAppResumedListener(PluginCall call) {
   call.success();
 }
 
+	@PluginMethod
+	public void clearAppResumedListener(PluginCall call) {
+		app2.unregisterActivityLifecycleCallbacks(callbacks2);
+		app2 = null;
+		call.success();
+	}
+
 
 	public void load2() {
 			app2 = (Application) getContext().getApplicationContext();
@@ -414,6 +421,9 @@ public void addAppResumedListener(PluginCall call) {
 	@PluginMethod
 	public void stopNotificationService(PluginCall call) {
 		Context context = getContext();
+		Log.i("Echo1", context);
+			Log.i("Echo2", app);
+				Log.i("Echo3", callbacks);
     if (context != null) {
 			if (app != null && callbacks != null) {
 				app.unregisterActivityLifecycleCallbacks(callbacks);

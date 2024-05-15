@@ -185,6 +185,7 @@ npx cap sync
 * [`echo(...)`](#echo)
 * [`addListener(string, ...)`](#addlistenerstring-)
 * [`addAppResumedListener()`](#addappresumedlistener)
+* [`clearAppResumedListener()`](#clearappresumedlistener)
 * [`showNotificationOnAppClose(...)`](#shownotificationonappclose)
 * [`stopNotificationService()`](#stopnotificationservice)
 * [`checkPermissionsService(...)`](#checkpermissionsservice)
@@ -240,6 +241,15 @@ addListener(eventName: string, listenerFunc: (...args: any[]) => void) => Promis
 
 ```typescript
 addAppResumedListener() => Promise<void>
+```
+
+--------------------
+
+
+### clearAppResumedListener()
+
+```typescript
+clearAppResumedListener() => Promise<void>
 ```
 
 --------------------
