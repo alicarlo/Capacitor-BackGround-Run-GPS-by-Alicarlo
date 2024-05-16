@@ -421,26 +421,18 @@ public void addAppResumedListener(PluginCall call) {
 	@PluginMethod
 	public void stopNotificationService(PluginCall call) {
 		Context context = getContext();
-		Log.d("Echo8", "ALICARLO");
-		Log.d("Echo77777", context.toString());
-			Log.d("Echo2", app.toString());
-				Log.d("Echo3", callbacks.toString());
-    // if (context != null) {
-			if (app != null && callbacks != null) {
-				app.unregisterActivityLifecycleCallbacks(callbacks);
-				callbacks = null; // Clear the reference
-				JSObject ret = new JSObject();
-				ret.put("message", "The service continues running 9999");
-				call.success(ret);
-			}else{
-				// call.reject("The service continues running");
-				JSObject ret = new JSObject();
-				ret.put("message", "Service not running 8888888");
-				call.success(ret);
-			}
-    /*} else {
-      call.reject("Service not running");
-    }*/
+		if (app != null && callbacks != null) {
+			app.unregisterActivityLifecycleCallbacks(callbacks);
+			callbacks = null; // Clear the reference
+			JSObject ret = new JSObject();
+			ret.put("message", "The service continues running 9999");
+			call.success(ret);
+		}else{
+			// call.reject("The service continues running");
+			JSObject ret = new JSObject();
+			ret.put("message", "Service not running 8888888");
+			call.success(ret);
+		}
 	}
 	
 	// Method used
