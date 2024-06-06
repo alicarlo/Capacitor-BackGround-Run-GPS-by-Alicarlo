@@ -199,6 +199,9 @@ npx cap sync
 * [`acquireWakeLock()`](#acquirewakelock)
 * [`releaseWakeLock()`](#releasewakelock)
 * [`openLocationSettings()`](#openlocationsettings)
+* [`checkPermissionCamera(...)`](#checkpermissioncamera)
+* [`checkPermissionMicroPhone(...)`](#checkpermissionmicrophone)
+* [`checkPermissionAudio(...)`](#checkpermissionaudio)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -392,6 +395,51 @@ releaseWakeLock() => Promise<void>
 ```typescript
 openLocationSettings() => Promise<void>
 ```
+
+--------------------
+
+
+### checkPermissionCamera(...)
+
+```typescript
+checkPermissionCamera(options: { value: boolean; }) => Promise<{ value: boolean; }>
+```
+
+| Param         | Type                             |
+| ------------- | -------------------------------- |
+| **`options`** | <code>{ value: boolean; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: boolean; }&gt;</code>
+
+--------------------
+
+
+### checkPermissionMicroPhone(...)
+
+```typescript
+checkPermissionMicroPhone(options: { value: boolean; }) => Promise<{ value: boolean; }>
+```
+
+| Param         | Type                             |
+| ------------- | -------------------------------- |
+| **`options`** | <code>{ value: boolean; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: boolean; }&gt;</code>
+
+--------------------
+
+
+### checkPermissionAudio(...)
+
+```typescript
+checkPermissionAudio(options: { value: boolean; }) => Promise<{ value: boolean; }>
+```
+
+| Param         | Type                             |
+| ------------- | -------------------------------- |
+| **`options`** | <code>{ value: boolean; }</code> |
+
+**Returns:** <code>Promise&lt;{ value: boolean; }&gt;</code>
 
 --------------------
 

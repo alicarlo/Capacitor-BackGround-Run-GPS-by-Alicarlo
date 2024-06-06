@@ -628,4 +628,107 @@ public void addAppResumedListener(PluginCall call) {
 			call.resolve(ret);
 		}
 	}
+
+	@PluginMethod
+	public void checkPermissionCamera(PluginCall call) {
+		Activity activity = getActivity();
+		boolean value = call.getBoolean("value");
+    if (activity != null) {
+      requestCameraPermission(call, activity, value);
+    }
+	}
+
+	private void requestCameraPermission(PluginCall call, Activity activity, boolean value) {
+		Context context = getContext().getApplicationContext();
+		if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+			if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Camera permission has been denied, permission is required to continue.");
+				call.resolve(ret);
+			} else {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Camera permission is required to continue.");
+				call.resolve(ret);
+			}
+		}else{
+			JSObject ret = new JSObject();
+				ret.put("message", "Camera mode permission granted.");
+				call.resolve(ret);
+		}
+	}
+
+
+	@PluginMethod
+	public void checkPermissionMicroPhone(PluginCall call) {
+		Activity activity = getActivity();
+		boolean value = call.getBoolean("value");
+    if (activity != null) {
+      requestMicroPhonePermission(call, activity, value);
+    }
+	}
+
+	private void requestMicroPhonePermission(PluginCall call, Activity activity, boolean value) {
+		Context context = getContext().getApplicationContext();
+		if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+			if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.RECORD_AUDIO)) {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Audio permission has been denied, permission is required to continue.");
+				call.resolve(ret);
+			} else {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Audio permission is required to continue.");
+				call.resolve(ret);
+			}
+		}else{
+			JSObject ret = new JSObject();
+				ret.put("message", "Audio mode permission granted.");
+				call.resolve(ret);
+		}
+	}
+
+	@PluginMethod
+	public void checkPermissionAudio(PluginCall call) {
+		Activity activity = getActivity();
+		boolean value = call.getBoolean("value");
+    if (activity != null) {
+      requestAudioPermission(call, activity, value);
+    }
+	}
+
+	private void requestAudioPermission(PluginCall call, Activity activity, boolean value) {
+		Context context = getContext().getApplicationContext();
+		if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+			if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.RECORD_AUDIO)) {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Audio permission has been denied, permission is required to continue.");
+				call.resolve(ret);
+			} else {
+				if (value == true) {
+					dialogNotification(activity, msg1);
+				}
+				JSObject ret = new JSObject();
+				ret.put("message", "Audio permission is required to continue.");
+				call.resolve(ret);
+			}
+		}else{
+			JSObject ret = new JSObject();
+				ret.put("message", "Audio mode permission granted.");
+				call.resolve(ret);
+		}
+	}
 }

@@ -80,6 +80,15 @@ var capacitorbackgroundrun = (function (exports, core) {
             throw new Error('Method not implemented.');
             // Implementa aquí la lógica para mostrar la notificación en la web
         }
+        async checkPermissionCamera(options) {
+            return options;
+        }
+        async checkPermissionMicroPhone(options) {
+            return options;
+        }
+        async checkPermissionAudio(options) {
+            return options;
+        }
     }
 
     var web = /*#__PURE__*/Object.freeze({

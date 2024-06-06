@@ -32,6 +32,21 @@ export interface backgroundrunPlugin {
     acquireWakeLock(): Promise<void>;
     releaseWakeLock(): Promise<void>;
     openLocationSettings(): Promise<void>;
+    checkPermissionCamera(options: {
+        value: boolean;
+    }): Promise<{
+        value: boolean;
+    }>;
+    checkPermissionMicroPhone(options: {
+        value: boolean;
+    }): Promise<{
+        value: boolean;
+    }>;
+    checkPermissionAudio(options: {
+        value: boolean;
+    }): Promise<{
+        value: boolean;
+    }>;
 }
 export interface PluginListenerHandle {
     remove: () => Promise<void>;

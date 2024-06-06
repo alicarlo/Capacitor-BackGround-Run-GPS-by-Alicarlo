@@ -219,6 +219,54 @@
         "docs": "",
         "complexTypes": [],
         "slug": "openlocationsettings"
+      },
+      {
+        "name": "checkPermissionCamera",
+        "signature": "(options: { value: boolean; }) => Promise<{ value: boolean; }>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ value: boolean; }"
+          }
+        ],
+        "returns": "Promise<{ value: boolean; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "checkpermissioncamera"
+      },
+      {
+        "name": "checkPermissionMicroPhone",
+        "signature": "(options: { value: boolean; }) => Promise<{ value: boolean; }>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ value: boolean; }"
+          }
+        ],
+        "returns": "Promise<{ value: boolean; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "checkpermissionmicrophone"
+      },
+      {
+        "name": "checkPermissionAudio",
+        "signature": "(options: { value: boolean; }) => Promise<{ value: boolean; }>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ value: boolean; }"
+          }
+        ],
+        "returns": "Promise<{ value: boolean; }>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "checkpermissionaudio"
       }
     ],
     "properties": []
