@@ -101,4 +101,16 @@ export class backgroundrunWeb extends WebPlugin implements backgroundrunPlugin {
   }
 
 
+	async checkPermissionCamera(options: { value: boolean }): Promise<{ value: boolean }> {
+		return options;
+  }
+	
+	async checkPermissionMicroPhone(options: { value: boolean }): Promise<{ value: boolean }> {
+		return options;
+  }
+	
+	async checkPermissionAudio(options: { value: boolean }): Promise<{ value: boolean }> {
+		return options;
+  }
+
 }
