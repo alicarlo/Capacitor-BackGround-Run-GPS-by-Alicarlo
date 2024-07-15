@@ -13,6 +13,9 @@ https://buymeacoffee.com/alicarlomow
 
 Available only for Android.
 
+Update for Api 34 (Android 14)
+Add this permission in androidManifest is required for run
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
 This plugin starts a service to continue reporting the location. Once started, you must stop it with one of our methods, as even if you close the application, the service will continue running.
 Always remember to inform the user about the use of their location, provide the option to view the permissions granted so that the user can review and accept or deny them. You can use our methods.
