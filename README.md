@@ -16,8 +16,12 @@ Available only for Android.
 Update for Api 34 (Android 14)
 To use this application on Android, make sure to include the following permission in your `AndroidManifest.xml` file:
 
-Line: 
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+![image](https://github.com/user-attachments/assets/e819778f-5a2e-446e-a5a2-ce1852fd894e)
+
+and add foregroundServiceType
+
+![image](https://github.com/user-attachments/assets/469810b3-6a24-44ca-a9ef-b0a554d2438e)
+
 
 This plugin starts a service to continue reporting the location. Once started, you must stop it with one of our methods, as even if you close the application, the service will continue running.
 Always remember to inform the user about the use of their location, provide the option to view the permissions granted so that the user can review and accept or deny them. You can use our methods.
